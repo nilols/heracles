@@ -5,7 +5,7 @@ import './styles.less';
 
 function Application() {
   return (
-    <div>{'Heracles Client'}</div>
+    <div>{'Heracles'}</div>
 );
 }
 
