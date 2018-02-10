@@ -13,4 +13,10 @@
   <artifactId>heracles-service</artifactId>
   <name>Heracles Service</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-core</artifactId>
+    </dependency>
+  </dependencies>
 </project>

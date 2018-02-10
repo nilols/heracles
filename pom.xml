@@ -18,11 +18,22 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <dropwizard.version>1.3.0-rc6</dropwizard.version>
   </properties>
 
   <modules>
     <module>heracles-service</module>
     <module>heracles-client</module>
   </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-core</artifactId>
+        <version>${dropwizard.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
 </project>
