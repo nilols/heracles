@@ -1,12 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import initStore from './redux/initStore';
+import Studio from './studio';
 import 'typeface-roboto';
 import './styles.less';
 
+const store = initStore({});
+
 function Application() {
   return (
-    <div>{'Heracles'}</div>
-);
+    <Provider store={store}>
+      <Studio />
+    </Provider>
+  );
 }
 
-render(<Application />, document.getElementById('root'));
+render(<Application />, document.getElementById('studio'));
