@@ -117,10 +117,11 @@
           <buildArgs>
             <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
           </buildArgs>
+          <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
         </configuration>
         <executions>
           <execution>
-            <id>build-and-deploy-docker</id>
+            <id>build-docker-image</id>
             <goals>
               <goal>build</goal>
             </goals>
