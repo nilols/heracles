@@ -1,4 +1,4 @@
-package se.arcticblue.heracles.service.dto;
+package se.arcticblue.heracles.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

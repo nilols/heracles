@@ -1,9 +1,21 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
+
 cache:
   directories:
-    - $HOME/.m2
-script:
- - mvn package
+  - "$HOME/.m2"
 
+services:
+- docker
+
+env:
+  global:
+  - secure: vPPMzl5HZeQt4NI7tFjK/XuornRJvbSUvLIVzHCFXx0CkILTx/+IzJgt+k9F3DKQ0al9AKXVclH111aZOZOkZvCllKnatjvjxIoN2a2Nxq4EX6XSA1W5R4g3iqp9qntIKRtKPTvY5zDVmzr9tX7PTWJHqnR9Rc9epeaSOI6k2Em+hWgHjwVG6xlB1u9/4waC9TcGwDeLlAavcuja2TiKxfo+T7oe7s1kbZf4t4WUbD5oWMkl3TV+i9/O+2aroMGfeBzF/qB8wiOA6E9XoGXqn4+512TPk4iIJw37bfz2iJFEyGfJGtH0YwbBbEsAHU8ctJee2InTcV3CG75E67VkJK4Hq0GfWKf5nEr5kQDNZ1CnixI21DPzuv2o0RrdC14NvOYt4Aw3QJsOmzEiZCpfiZpvDEEQfQS7bpwIFJHxVIUnt9g5QQUWltntZ0gya6gfD6gi+39o05MAIJGKgu6z6YzvxiHzAWtwr+3mxtr8gf43vhd+GrV4R3prZL94cH4dC1y+fOMqXuVYSvhDh74XkE3NG0FrD8hM4kpMdH/F63nQqaD9sKPqB78qQXWbJVce7lWGRD100Pb8rp5EOBf+cr+/w+RO2SUWPB568LdTvvdyg6kJu/niWVuarYOWFYAZQZppkQuZd90c7ai4yZ8Bk/1miqQrvnOXqI0kLwAFK5Y=
+  - secure: Q8RdKPtraVmARwoeQBUqd+6ptsBtgSFUwMZ/xuYZFMUiDePdAk/cUxRISWmac1GUd5rbzkQ0Xuqzppj9cKn0epuSsRv81Ldq/zLr41WjJ/KoJRHB3phTDARbCQDuEl55CNAEEM+GCi7qsdYLY59gn2Qfo8eQbVDdKdXHWVcWtKv+TC4frFnChe61qZMWt2Dwdy3zq4PpKnTAg0KvAsKsr0DpmSBXU6M07aZMz0FBXIsX2gAlyBIeUn6Q840uqz9yIYUyjG34w856L5iFPo2g15NUqEyrORJB4SwgQcP1O87SzjpsvFZLiDTVjYaSLtdokqeys4bNcnTgi/i8MITsjU06I3FjvjkLANKydYhU0fXkwh4naDTI78Ch0Dl58PcMpevwun8GCVrMCgq8i7X+1tBBLQyci70Mov/pSWPDFY/HelHf3V368Emo7Yn6R4KAiYVm9WbDxFnoc4Fu/jwEWfbJQZfCdLOk44XfztMpMUBEOqjf86m2Gj/AzIkk9LTjvsPIxMQHK/K9gCbZEJqcf97FJWX9qdRwWowblLqI2yYeD+0VLvHGfiUN02Jodri6fOA00QmjngiWb8toDwWAMXmA8TplB8/UX12i4jI0TrtadqTHVjtbX8qpNokcemNzy+Ka36v0m6DIhdTeYr1XLspAnBAn87THXqhe932j7wA=
+
+script:
+- mvn package
+- eval $(aws ecr get-login --no-include-email --region us-east-2)
+- docker tag arcticblue/heracles:1.0.0-SNAPSHOT 714373397855.dkr.ecr.us-east-2.amazonaws.com/arcticblue/heracles:latest
+- docker push 714373397855.dkr.ecr.us-east-2.amazonaws.com/arcticblue/heracles:latest

@@ -1,6 +1,6 @@
-package se.arcticblue.heracles.service.endpoints;
+package se.arcticblue.heracles.api.endpoints;
 
-import se.arcticblue.heracles.service.dto.Message;
+import se.arcticblue.heracles.api.dto.Message;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
